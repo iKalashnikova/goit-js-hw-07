@@ -1,8 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-const basicLightbox = window.basicLightbox;
-
 // console.log(galleryItems);
 
 const galleryList = document.querySelector(".gallery");
@@ -34,5 +32,15 @@ function handleGalleryClick(event) {
     width="800" height="600">`
 )
 
-instance.show()
+instance.show();
+
+function handleEscapeClose (event) {
+    if (event.code === 'Escape') {
+        instance.close()
+        window.removeEventListener('keydown', handleEscapeClose)
+    }
+
 }
+window.addEventListener('keydown', handleEscapeClose)
+}
+// console.log(basicLightbox);
